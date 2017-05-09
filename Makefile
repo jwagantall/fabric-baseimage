@@ -51,9 +51,9 @@ build/docker/%/$(DUMMY):
 
 build/docker/%/.push: build/docker/%/$(DUMMY)
 	@docker login \
-		--email=$(DOCKER_HUB_EMAIL) \
-		--username=$(DOCKER_HUB_USERNAME) \
-		--password=$(DOCKER_HUB_PASSWORD)
+		--email="$(DOCKER_HUB_EMAIL)" \
+		--username="$(DOCKER_HUB_USERNAME)" \
+		--password="$(DOCKER_HUB_PASSWORD)"
 	@docker push $(BASENAME)-$(patsubst build/docker/%/.push,%,$@):$(DOCKER_TAG)
 
 docker: $(patsubst %,build/docker/%/$(DUMMY),$(DOCKER_IMAGES))
